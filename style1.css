@@ -1,0 +1,86 @@
+   /* Estilo global: para todos los elementos */
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Estilo del body: fondo claro, fuente Arial y contenido centrado */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #eef4fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* 100% del alto de la pantalla */
+    }
+
+    /* Contenedor principal de la calculadora */
+    .container {
+      background-color: white;               /* Fondo blanco */
+      padding: 30px 40px;                    /* Espaciado interno */
+      border-radius: 15px;                   /* Bordes redondeados */
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Sombra ligera */
+      text-align: center;                    /* Centrar texto */
+      width: 320px;                          /* Ancho fijo */
+    }
+
+    /* Estilo del título */
+    h2 {
+      margin-bottom: 20px;
+      font-weight: normal;
+    }
+
+    /* Fila de inputs y el símbolo "=" */
+    .inputs {
+      display: flex;                         /* Mostrar en fila */
+      justify-content: space-between;       /* Espaciado igual */
+      align-items: center;                  /* Centrado vertical */
+      margin-bottom: 25px;
+    }
+
+    /* Inputs de número y resultado */
+    input[type="number"],
+    input[readonly] {
+      width: 70px;                           /* Ancho fijo */
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    /* Solo el campo de resultado tendrá fondo gris */
+    input[readonly] {
+      background-color: #f1f1f1;
+    }
+
+    /* El símbolo "=" entre los campos */
+    .inputs span {
+      font-size: 18px;
+      margin: 0 5px;
+    }
+
+    /* Contenedor de los botones */
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Estilo de los botones de operación */
+    .buttons button {
+      width: 45px;
+      height: 40px;
+      font-size: 20px;
+      background-color: #3399ff;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    /* Cambia el color cuando pasas el mouse */
+    .buttons button:hover {
+      background-color: #1a8cff;
+    }
