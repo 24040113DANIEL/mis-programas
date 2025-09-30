@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calcular Cuadrado</title>
+    <link rel="stylesheet" href="style/style3.css">
+</head>
+<body>
+  <form name="form1" action="">
+    <h2>Calculadora de Cuadrado</h2>
+    <label for="num1">Ingresa un número</label>
+    <input type="number" name="num1" id="num1">
+
+    <label for="resultado">Resultado</label>
+    <input type="number" name="resultado" id="resultado" readonly>
+
+    <input type="button" value="Calcular cuadrado" onclick="calcularCuadrado()">
+    <input type="button" value="Borrar" class="btn-clear" onclick="borrar()">
+  </form>
+
+  <script>
+    function calcularCuadrado() {
+      var num1 = document.form1.num1.value;
+      var resultado = num1 * num1;
+      document.form1.resultado.value = resultado;
+    }
+
+    function borrar() {
+      document.form1.num1.value = "";
+      document.form1.resultado.value = "";
+      document.form1.num1.focus();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Registro de Nómina</title>
+  <link rel="stylesheet" href="style/style2.css">
+</head>
+<body>
+  <div class="page">
+    <div class="card" role="region" aria-label="Registro de Nómina">
+      <h1>Registro de Nómina</h1>
+
+      <form id="nominaForm" onsubmit="return false;" autocomplete="off">
+        <div class="field">
+          <label for="idEmpleado">ID Empleado:</label>
+          <input id="idEmpleado" type="text" placeholder="Ej. 00123">
+        </div>
+
+        <div class="field">
+          <label for="nombre">Nombre:</label>
+          <input id="nombre" type="text" placeholder="Nombre del empleado">
+        </div>
+
+        <div class="field">
+          <label for="horasTrabajadas">Horas trabajadas (semana):</label>
+          <input id="horasTrabajadas" type="number" min="0" step="0.01" placeholder="Horas totales trabajadas">
+        </div>
+
+        <div class="field">
+          <label for="costoHora">Costo por hora:</label>
+          <input id="costoHora" type="number" min="0" step="0.01" placeholder="Q / $ por hora">
+        </div>
+
+        <div class="field">
+          <label for="horasNormales">Horas Normales:</label>
+          <input id="horasNormales" type="text" class="result" readonly aria-readonly="true" value="">
+        </div>
+
+        <div class="field">
+          <label for="horasExtras">Horas Extras:</label>
+          <input id="horasExtras" type="text" class="result" readonly aria-readonly="true" value="">
+        </div>
+
+        <div class="field">
+          <label for="subtotal">Subtotal:</label>
+          <input id="subtotal" type="text" class="result" readonly aria-readonly="true" value="">
+        </div>
+
+        <div class="field">
+          <label for="ispt">ISPT (10%):</label>
+          <input id="ispt" type="text" class="result" readonly aria-readonly="true" value="">
+        </div>
+
+        <div class="field">
+          <label for="montoPagar">Monto a Pagar:</label>
+          <input id="montoPagar" type="text" class="result" readonly aria-readonly="true" value="">
+        </div>
+
+        <div class="buttons">
+          <button class="btn-calc" id="btnCalcular" type="button">Calcular</button>
+          <button class="btn-clear" id="btnLimpiar" type="button">Limpiar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+
+    (function(){
+      const hTrab = document.getElementById('horasTrabajadas');
+      const costo = document.getElementById('costoHora');
+      const hNorm = document.getElementById('horasNormales');
+      const hExtra = document.getElementById('horasExtras');
+      const sub = document.getElementById('subtotal');
+      const ispt = document.getElementById('ispt');
+      const monto = document.getElementById('montoPagar');
+
+      function formatMoney(v) {
+        if (isNaN(v)) return '';
+
+        return Number(v).toFixed(2);
+      }
+
+      function calcular() {
+        const horasVal = parseFloat(hTrab.value);
+        const costoVal = parseFloat(costo.value);
+
+        if (isNaN(horasVal) || isNaN(costoVal)) {
+          alert('Por favor ingresa horas y costo por hora válidos.');
+          return;
+        }
+
+        const horasNormales = Math.min(Math.max(horasVal, 0), 40);
+        const horasExtras = Math.max(horasVal - 40, 0);
+
+        const pagoNormales = horasNormales * costoVal;
+        const pagoExtras = horasExtras * costoVal * 1.5;
+
+        const subtotal = pagoNormales + pagoExtras;
+        const isptVal = subtotal * 0.10; // 10%
+        const montoPagar = subtotal - isptVal;
+
+        hNorm.value = formatMoney(horasNormales);
+        hExtra.value = formatMoney(horasExtras);
+        sub.value = formatMoney(subtotal);
+        ispt.value = formatMoney(isptVal);
+        monto.value = formatMoney(montoPagar);
+      }
+
+      function limpiar() {
+        document.getElementById('nominaForm').reset();
+        [hNorm,hExtra,sub,ispt,monto].forEach(i => i.value = '');
+      }
+
+      document.getElementById('btnCalcular').addEventListener('click', calcular);
+      document.getElementById('btnLimpiar').addEventListener('click', limpiar);
+
+
+      [hTrab, costo].forEach(el => {
+        el.addEventListener('keydown', function(e){
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            calcular();
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

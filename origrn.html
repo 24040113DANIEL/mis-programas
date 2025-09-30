@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal de Programas</title>
+  <style>
+    /* Fondo principal */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #d94bd6; /* rosa-violeta */
+      background-image: linear-gradient(160deg, #d94bd6, #f080c0);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Contenedor general */
+    .container {
+      text-align: center;
+      width: 90%;
+      max-width: 900px;
+    }
+
+    /* Título principal */
+    .titulo {
+      font-size: 2.2rem;
+      color: #fff;
+      margin-bottom: 25px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    /* Botonera */
+    .botones {
+      margin-bottom: 35px;
+    }
+
+    /* Estilo base de los botones */
+    .btn {
+      display: inline-block;
+      margin: 8px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #fff;
+      border-radius: 15px;
+      text-decoration: none;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.25);
+      transition: all 0.2s ease-in-out;
+    }
+
+    /* Colores de cada botón */
+    .calculadora {
+      background-color: #ff5733; /* naranja */
+    }
+
+    .empleados {
+      background-color: #0099ff; /* azul claro */
+    }
+
+    .cuadrado {
+      background-color: #0066cc; /* azul oscuro */
+    }
+
+    .inicio {
+      background-color: #00c9a7; /* verde agua */
+    }
+
+    /* Hover en botones */
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 6px 12px rgba(0,0,0,0.35);
+    }
+
+    /* Caja de contenido */
+    .contenido {
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+      padding: 25px;
+      border-radius: 12px;
+      display: inline-block;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .contenido h2 {
+      margin: 0 0 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="titulo">Portal de Programas</h1>
+
+    <div class="botones">
+      <a href="calculadora.html" class="btn calculadora">CALCULADORA</a>
+      <a href="nomina.html" class="btn empleados">EMPLEADOS</a>
+      <a href="cuadrado.html" class="btn cuadrado">CUADRADO</a>
+      <a href="inicio.html" class="btn inicio">INICIO</a>
+    </div>
+
+    <div class="contenido">
+      <h2>Bienvenido al Portal de Programas</h2>
+      <p>Selecciona un programa de las opciones superiores para comenzar</p>
+    </div>
+  </div>
+</body>
+</html>
